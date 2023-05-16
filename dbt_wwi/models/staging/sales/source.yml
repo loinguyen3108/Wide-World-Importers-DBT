@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: sales
+    database: postgres
+    schema: sales
+    tables:
+      - name: buyinggroups
+      - name: customercategories
+      - name: customers
+      - name: invoicelines
+      - name: invoices
+      - name: specialdeals

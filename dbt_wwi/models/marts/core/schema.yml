@@ -1,0 +1,218 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: Customer dimension data cleaned from staging.
+    columns:
+      - name: customer_key
+        description: The primary key for dim_customer.
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: Customer name.
+        tests:
+          - not_null
+      - name: customer_category_name
+        description: Customer category name.
+      - name: buying_group_name
+        desciption: Buying group name.
+      - name: open_date_key
+        description: Open date account.
+        tests:
+          - not_null
+      - name: phone_number
+        desciption: Customer phone number.
+      - name: fax_number
+        desciption: Customer fax number.
+      - name: website_url
+        desciption: Customer website.
+      - name: delivery_city
+        desciption: Customer delivery city.
+      - name: delivery_state_province
+        desciption: Customer delivery province.
+      - name: delivery_country
+        desciption: Customer delivery country.
+
+  - name: dim_delivery_method
+    desciption: Delivery method dimension data cleaned from staging.
+    columns:
+      - name: delivery_method_key
+        description: The primary key for dim_delivery_method.
+        tests:
+          - unique
+          - not_null
+      - name: delivery_method_name
+        desciption: Delivery method name.
+        tests:
+          - not_null
+  - name: dim_product
+    desciption: Product dimension data cleaned from staging.
+    columns:
+      - name: product_key
+        description: The primary key for dim_product.
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        desciption: Product name.
+        tests:
+          - not_null
+      - name: supplier_name
+        desciption: Supplier name.
+        tests:
+          - not_null
+      - name: color_name
+        desciption: Color name.
+        tests:
+          - not_null
+      - name: package_type_name
+        desciption: Package type name.
+        tests:
+          - not_null
+      - name: brand
+        desciption: Brand.
+      - name: size
+        desciption: Size.
+      - name: barcode
+        desciption: Barcode.
+      - name: tax_rate
+        desciption: Tax rate.
+        tests:
+          - not_null
+      - name: unit_price
+        desciption: Unit price.
+        tests:
+          - not_null
+      - name: recommended_retail_price
+        desciption: Recommended retail price.
+        tests:
+          - not_null
+      - name: typical_weight_per_unit
+        desciption: Typical weight per unit.
+      - name: quantity_per_outer
+        desciption: Quantity per order.
+      - name: manufacturer
+        desciption: Manufacturer.
+        tests:
+          - not_null
+      - name: tags
+        desciption: Tags.
+
+  - name: dim_promotion
+    desciption: Promotion dimension data cleaned from staging.
+    columns:
+      - name: promotion_key
+        description: The primary key for dim_promotion.
+        tests:
+          - unique
+          - not_null
+      - name: promotion_description
+        desciption: Description.
+      - name: start_date
+        desciption: Event started date.
+        tests:
+          - not_null
+      - name: end_date
+        desciption: Event ended date.
+        tests:
+          - not_null
+      - name: discount_amount
+        desciption: Discount price amount.
+      - name: discount_percentage
+        desciption: Discount price percentage.
+
+  - name: dim_sales_person
+    desciption: Sales person dimension data cleaned from staging.
+    columns:
+      - name: sales_person_key
+        description: The primary key for dime_sales_person.
+        tests:
+          - unique
+          - not_null
+      - name: full_name
+        desciption: Fullname.
+        tests:
+          - not_null
+      - name: preferred_name
+        desciption: Preferred name.
+      - name: search_name
+        desciption: Search name.
+      - name: is_system_user
+        desciption: Whether person is user system.
+      - name: is_employee
+        desciption: Whether person is employee.
+      - name: phone_number
+        desciption: Phone number.
+      - name: fax_number
+        desciption: Fax number.
+      - name: email_address
+        desciption: Email.
+
+  - name: fct_sales
+    desciption: Sales fact data cleaned from staging.
+    columns:
+      - name: invoice_key
+        description: The primary key for fct_sales.
+        tests:
+          - not_null
+      - name: customer_key
+        desciption: The foreign key for fct_sales and dim_customers.
+      - name: product_key
+        desciption: The foreign key for fct_sales and dim_product.
+      - name: delivery_method_key
+        desciption: The foreign key for fct_sales and dim_delivery_methods.
+      - name: sales_person_key
+        desciption: The foreign key for fct_sales and dim_sales_person.
+      - name: promotion_key
+        desciption: The foreign key for fct_sales and dim_promotion.
+      - name: date_key
+        desciption: The foreign key for fct_sales and dim_date.
+      - name: net_unit_price
+        desciption: Net unit price.
+        tests:
+          - not_null
+      - name: regular_unit_price
+        desciption: Regular unit price.
+        tests:
+          - not_null
+      - name: line_profit
+        desciption: Line profit.
+        tests:
+          - not_null
+      - name: quantity
+        desciption: Quantitu.
+        tests:
+          - not_null
+      - name: discount_unit_price
+        desciption: Discount unit price.
+        tests:
+          - not_null
+      - name: unit_profit
+        desciption: Unit profix.
+        tests:
+          - not_null
+      - name: unit_cost
+        desciption: Unit cost.
+        tests:
+          - not_null
+      - name: gross_revenue
+        desciption: Gross revenue.
+        tests:
+          - not_null
+      - name: net_revenue
+        desciption: Net revenue.
+        tests:
+          - not_null
+      - name: cost_amount
+        desciption: Cost amount.
+        tests:
+          - not_null
+      - name: gross_profit
+        desciption: Gross profit.
+        tests:
+          - not_null
+      - name: net_profit
+        desciption: Net profit.
+        tests:
+          - not_null

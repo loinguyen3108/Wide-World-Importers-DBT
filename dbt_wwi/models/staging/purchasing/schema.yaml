@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_purchasing__suppliers
+    description: Staged supplier data from wwi purchasing.
+    columns:
+      - name: supplier_id
+        description: The primary key for suppliers.
+        tests:
+          - unique
+          - not_null
+      - name: supplier_name
+        description: Supplier name.
+        tests:
+          - not_null

@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: application
+    database: postgres
+    schema: application
+    tables:
+      - name: cities
+      - name: countries
+      - name: deliverymethods
+      - name: paymentmethods
+      - name: people
+      - name: stateprovinces

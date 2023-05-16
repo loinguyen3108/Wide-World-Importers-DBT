@@ -1,0 +1,97 @@
+version: 2
+
+models:
+  - name: stg_application__cities
+    description: Staged city data from wwi application.
+    columns:
+      - name: city_id
+        description: The primary key for cities.
+        tests:
+          - unique
+          - not_null
+      - name: state_province_id
+        description: The foreign key for cities and state_provinces.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application__state_provinces')
+              field: state_province_id
+      - name: city_name
+        description: City name.
+        tests:
+          - not_null
+
+  - name: stg_application__countries
+    description: Staged country data from wwi application.
+    columns:
+      - name: country_id
+        description: The primary key for countries.
+        tests:
+          - unique
+          - not_null
+      - name: country_name
+        description: Country name.
+        tests:
+          - not_null
+
+  - name: stg_application__delivery_methods
+    description: Staged delivery method data from wwi application.
+    columns:
+      - name: delivery_method_id
+        description: The primary key for delivery_methods.
+        tests:
+          - unique
+          - not_null
+      - name: delivery_method_name
+        description: Delivery method name.
+        tests:
+          - not_null
+  
+  - name: stg_application__person
+    description: Staged person data from wwi application.
+    columns:
+      - name: person_id
+        description: The primary key for person.
+        tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: Person fullname.
+        tests:
+          - not_null
+      - name: preferred_name
+        description: Person preferred name.
+      - name: search_name
+        description: Person name to search in system.
+      - name: is_system_user
+        description: Whether person is user system.
+      - name: is_employee
+        description: Whether person is employee.
+      - name: is_sales_person
+        description: Whether person is sales employee.
+      - name: phone_number
+        description: Person phone.
+      - name: fax_number
+        description: Person fax.
+      - name: email_address
+        description: Person email.
+  
+  - name: stg_application__state_provinces
+    description: Staged state province from wwi application.
+    columns:
+      - name: state_province_id
+        description: The primary key for state_provinces.
+        tests:
+          - unique
+          - not_null
+      - name: country_id
+        description: The foreign key for state_provinces and country.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application__countries')
+              field: country_id
+      - name: state_province_name
+        description: State province name.
+        tests:
+          - not_null

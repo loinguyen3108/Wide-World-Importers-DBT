@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: stg_warehouse__colors
+    description: Staged color data from wwi warehouse.
+    columns:
+      - name: color_id
+        description: The primary key for colors.
+        tests:
+          - unique
+          - not_null
+      - name: color_name
+        description: Color name.
+        tests:
+          - not_null
+  
+  - name: stg_warehouse__package_types
+    description: Staged package type data from wwi warehouse.
+    columns:
+      - name: package_type_id
+        description: The primary key for package_types.
+        tests:
+          - unique
+          - not_null
+      - name: package_type_name
+        description: Package type name.
+        tests:
+          - not_null
+  
+  - name: stg_warehouse__stock_items
+    description: Staged stock time data from wwi warehouse.
+    columns:
+      - name: stock_item_id
+        description: The primary key for stock items.
+        tests:
+          - unique
+          - not_null
+      - name: supplier_id
+        description: The foreign key for stock_items and supplier (purchasing).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_purchasing__suppliers')
+              field: supplier_id
+      - name: color_id
+        description: The foreign key for stock_items and colors.
+        tests:
+          - relationships:
+              to: ref('stg_warehouse__colors')
+              field: color_id
+      - name: unit_package_id
+        description: The foreign key for stock_items and package_types.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_warehouse__package_types')
+              field: package_type_id
+      - name: stock_item_name
+        description: Stock item name.
+        tests:
+          - not_null
+      - name: brand
+        description: Stock item brand.
+      - name: size
+        description: Stock item size.
+      - name: barcode
+        description: Stock item barcode.
+      - name: tax_rate
+        description: Stock item tax rate.
+        tests:
+          - not_null
+      - name: unit_price
+        description: Stock item unit price.
+        tests:
+          - not_null
+      - name: recommended_retail_price
+        description: Stock item retail price.
+        tests:
+          - not_null
+      - name: typical_weight_per_unit
+        description: Stock item weight per unit.
+      - name: tags
+        description: Stock item tag.
+      - name: quantity_per_outer
+        description: Stock item quantity per outer.
+        tests:
+          - not_null
+      - name: custom_fields
+        description: Stock item extend details.
+
+      
+      

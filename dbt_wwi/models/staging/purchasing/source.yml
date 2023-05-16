@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: purchasing
+    database: postgres
+    schema: purchasing
+    tables:
+      - name: suppliers

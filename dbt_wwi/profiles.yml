@@ -1,0 +1,12 @@
+dbt_wwi:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5433
+      dbname: postgres
+      schema: dev
+      threads: 4

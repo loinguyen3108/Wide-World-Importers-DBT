@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: warehouse
+    database: postgres
+    schema: warehouse
+    tables:
+      - name: colors
+      - name: packagetypes
+      - name: stockitems

@@ -1,0 +1,189 @@
+version: 2
+
+models:
+  - name: stg_sales__buying_groups
+    desciption: Staged buying group data from wwi sales.
+    columns:
+      - name: buying_group_id
+        desciption: The primary key for buying_groups.
+        tests:
+          - unique
+          - not_null
+      - name: buying_group_name
+        desciption: Buying group name.
+        tests:
+          - not_null
+
+  - name: stg_sales__customer_categories
+    desciption: Staged customer category data from wwi sales.
+    columns:
+      - name: customer_category_id
+        desciption: The primary key for customer_categories.
+        tests:
+          - unique
+          - not_null
+      - name: customer_category_name
+        desciption: Customer category name.
+        tests:
+          - not_null
+
+  - name: stg_sales__customers
+    desciption: Staged customer data from wwi sales.
+    columns:
+      - name: customer_id
+        desciption: The primary key for custommers.
+        tests:
+          - unique
+          - not_null
+      - name: customer_category_id
+        desciption: The foreign key for customers and customer_categories.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sales__customer_categories')
+              field: customer_category_id
+      - name: buying_group_id
+        desciption: The foreign key for customers and buying_groups.
+        tests:
+          - relationships:
+              to: ref('stg_sales__buying_groups')
+              field: buying_group_id
+      - name: delivery_city_id
+        desciption: The foreign key for customer and cities (application).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application__cities')
+              field: city_id
+      - name: customer_name
+        desciption: Customer name.
+        tests:
+          - not_null
+      - name: account_opened_date
+        desciption: Customer account open date.
+        tests:
+          - not_null
+      - name: phone_number
+        desciption: Customer phone.
+      - name: fax_number
+        desciption: Customer fax.
+      - name: website_url
+        desciption: Customer website.
+
+  - name: stg_sales__invoice_lines
+    desciption: Staged invoice line data from wwi sales.
+    columns:
+      - name: invoice_line_id
+        desciption: The primary key for invoice lines.
+        tests:
+          - unique
+          - not_null
+      - name: invoice_id
+        desciption: The foreign key for invoice lines and invoices.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sales__invoices')
+              field: invoice_id
+      - name: stock_item_id
+        desciption: The foreign key for invoice lines and stock_items (wareshoue).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_warehouse__stock_items')
+              field: stock_item_id
+      - name: package_type_id
+        desciption: The foreign key for invoice lines and package_types (wareshoue).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_warehouse__package_types')
+              field: package_type_id
+      - name: quantity
+        desciption: Amount stock in order.
+        tests:
+          - not_null
+      - name: unit_price
+        desciption: Each stock unit price.
+        tests:
+          - not_null
+      - name: tax_rate
+        desciption: Each stock tax rate.
+        tests:
+          - not_null
+      - name: tax_amount
+        desciption: Each stock tax amount.
+        tests:
+          - not_null
+      - name: line_profix
+        desciption: Each stock profix.
+        tests:
+          - not_null
+      - name: extended_price
+        desciption: Each stock extended price.
+        tests:
+          - not_null
+
+  - name: stg_sales__invoices
+    desciption: Staged invoice data from wwi sales.
+    columns:
+      - name: invoice_id
+        desciption: The primary key for invoices.
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        desciption: The foreign key for invoices and customers.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sales__customers')
+              field: customer_id
+      - name: delivery_method_id
+        desciption: The foreign key for invoices and delivery_methods (application).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application__delivery_methods')
+              field: delivery_method_id
+      - name: sales_person_id
+        desciption: The foreign key for invoices and person (application).
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application__person')
+              field: person_id
+      - name: invoice_date
+        desciption: Invoice created date.
+        tests:
+          - not_null
+  
+  - name: stg_sales__promotion
+    desciption: Staged promation data from wwi sales.
+    columns:
+      - name: promotion_id
+        desciption: The primary key for promotion.
+        tests:
+          - unique
+          - not_null
+      - name: buying_group_id
+        desciption: The foreign key for promotion and buying_groups.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sales__buying_groups')
+              field: buying_group_id
+      - name: promotion_desctiption
+        desciption: Promotion details.
+      - name: start_date
+        desciption: Promotion start date.
+        tests:
+          - not_null
+      - name: end_date
+        desciption: Promotion end date.
+        tests:
+          - not_null
+      - name: discount_amount
+        desciption: Amount discount price.
+      - name: discount_percentage
+        desciption: Percentage discount price.
