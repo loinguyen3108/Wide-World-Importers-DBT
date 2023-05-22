@@ -2,30 +2,30 @@ version: 2
 
 models:
   - name: location
-    desciption: All location data from staging.
+    description: All location data from staging.
     columns:
       - name: city_id
-        desciption: The primary key for location.
+        description: The primary key for location.
         tests:
           - unique
           - not_null
       - name: state_province_id
-        desciption: The primary key for location.
+        description: The primary key for location.
         tests:
           - not_null
       - name: country_id
-        desciption: The primary key for location.
+        description: The primary key for location.
         tests:
           - not_null
       - name: city_name
-        desciption: City name.
+        description: City name.
         tests:
           - not_null
       - name: state_province_name
-        desciption: State province name.
+        description: State province name.
         tests:
           - not_null
       - name: country_name
-        desciption: Country name.
+        description: Country name.
         tests:
           - not_null

@@ -16,26 +16,26 @@ models:
       - name: customer_category_name
         description: Customer category name.
       - name: buying_group_name
-        desciption: Buying group name.
+        description: Buying group name.
       - name: open_date_key
         description: Open date account.
         tests:
           - not_null
       - name: phone_number
-        desciption: Customer phone number.
+        description: Customer phone number.
       - name: fax_number
-        desciption: Customer fax number.
+        description: Customer fax number.
       - name: website_url
-        desciption: Customer website.
+        description: Customer website.
       - name: delivery_city
-        desciption: Customer delivery city.
+        description: Customer delivery city.
       - name: delivery_state_province
-        desciption: Customer delivery province.
+        description: Customer delivery province.
       - name: delivery_country
-        desciption: Customer delivery country.
+        description: Customer delivery country.
 
   - name: dim_delivery_method
-    desciption: Delivery method dimension data cleaned from staging.
+    description: Delivery method dimension data cleaned from staging.
     columns:
       - name: delivery_method_key
         description: The primary key for dim_delivery_method.
@@ -43,11 +43,11 @@ models:
           - unique
           - not_null
       - name: delivery_method_name
-        desciption: Delivery method name.
+        description: Delivery method name.
         tests:
           - not_null
   - name: dim_product
-    desciption: Product dimension data cleaned from staging.
+    description: Product dimension data cleaned from staging.
     columns:
       - name: product_key
         description: The primary key for dim_product.
@@ -55,52 +55,52 @@ models:
           - unique
           - not_null
       - name: product_name
-        desciption: Product name.
+        description: Product name.
         tests:
           - not_null
       - name: supplier_name
-        desciption: Supplier name.
+        description: Supplier name.
         tests:
           - not_null
       - name: color_name
-        desciption: Color name.
+        description: Color name.
         tests:
           - not_null
       - name: package_type_name
-        desciption: Package type name.
+        description: Package type name.
         tests:
           - not_null
       - name: brand
-        desciption: Brand.
+        description: Brand.
       - name: size
-        desciption: Size.
+        description: Size.
       - name: barcode
-        desciption: Barcode.
+        description: Barcode.
       - name: tax_rate
-        desciption: Tax rate.
+        description: Tax rate.
         tests:
           - not_null
       - name: unit_price
-        desciption: Unit price.
+        description: Unit price.
         tests:
           - not_null
       - name: recommended_retail_price
-        desciption: Recommended retail price.
+        description: Recommended retail price.
         tests:
           - not_null
       - name: typical_weight_per_unit
-        desciption: Typical weight per unit.
+        description: Typical weight per unit.
       - name: quantity_per_outer
-        desciption: Quantity per order.
+        description: Quantity per order.
       - name: manufacturer
-        desciption: Manufacturer.
+        description: Manufacturer.
         tests:
           - not_null
       - name: tags
-        desciption: Tags.
+        description: Tags.
 
   - name: dim_promotion
-    desciption: Promotion dimension data cleaned from staging.
+    description: Promotion dimension data cleaned from staging.
     columns:
       - name: promotion_key
         description: The primary key for dim_promotion.
@@ -108,22 +108,22 @@ models:
           - unique
           - not_null
       - name: promotion_description
-        desciption: Description.
+        description: Description.
       - name: start_date
-        desciption: Event started date.
+        description: Event started date.
         tests:
           - not_null
       - name: end_date
-        desciption: Event ended date.
+        description: Event ended date.
         tests:
           - not_null
       - name: discount_amount
-        desciption: Discount price amount.
+        description: Discount price amount.
       - name: discount_percentage
-        desciption: Discount price percentage.
+        description: Discount price percentage.
 
   - name: dim_sales_person
-    desciption: Sales person dimension data cleaned from staging.
+    description: Sales person dimension data cleaned from staging.
     columns:
       - name: sales_person_key
         description: The primary key for dime_sales_person.
@@ -131,88 +131,88 @@ models:
           - unique
           - not_null
       - name: full_name
-        desciption: Fullname.
+        description: Fullname.
         tests:
           - not_null
       - name: preferred_name
-        desciption: Preferred name.
+        description: Preferred name.
       - name: search_name
-        desciption: Search name.
+        description: Search name.
       - name: is_system_user
-        desciption: Whether person is user system.
+        description: Whether person is user system.
       - name: is_employee
-        desciption: Whether person is employee.
+        description: Whether person is employee.
       - name: phone_number
-        desciption: Phone number.
+        description: Phone number.
       - name: fax_number
-        desciption: Fax number.
+        description: Fax number.
       - name: email_address
-        desciption: Email.
+        description: Email.
 
   - name: fct_sales
-    desciption: Sales fact data cleaned from staging.
+    description: Sales fact data cleaned from staging.
     columns:
       - name: invoice_key
         description: The primary key for fct_sales.
         tests:
           - not_null
       - name: customer_key
-        desciption: The foreign key for fct_sales and dim_customers.
+        description: The foreign key for fct_sales and dim_customers.
       - name: product_key
-        desciption: The foreign key for fct_sales and dim_product.
+        description: The foreign key for fct_sales and dim_product.
       - name: delivery_method_key
-        desciption: The foreign key for fct_sales and dim_delivery_methods.
+        description: The foreign key for fct_sales and dim_delivery_methods.
       - name: sales_person_key
-        desciption: The foreign key for fct_sales and dim_sales_person.
+        description: The foreign key for fct_sales and dim_sales_person.
       - name: promotion_key
-        desciption: The foreign key for fct_sales and dim_promotion.
+        description: The foreign key for fct_sales and dim_promotion.
       - name: date_key
-        desciption: The foreign key for fct_sales and dim_date.
+        description: The foreign key for fct_sales and dim_date.
       - name: net_unit_price
-        desciption: Net unit price.
+        description: Net unit price.
         tests:
           - not_null
       - name: regular_unit_price
-        desciption: Regular unit price.
+        description: Regular unit price.
         tests:
           - not_null
       - name: line_profit
-        desciption: Line profit.
+        description: Line profit.
         tests:
           - not_null
       - name: quantity
-        desciption: Quantitu.
+        description: Quantity.
         tests:
           - not_null
       - name: discount_unit_price
-        desciption: Discount unit price.
+        description: Discount unit price.
         tests:
           - not_null
       - name: unit_profit
-        desciption: Unit profix.
+        description: Unit profix.
         tests:
           - not_null
       - name: unit_cost
-        desciption: Unit cost.
+        description: Unit cost.
         tests:
           - not_null
       - name: gross_revenue
-        desciption: Gross revenue.
+        description: Gross revenue.
         tests:
           - not_null
       - name: net_revenue
-        desciption: Net revenue.
+        description: Net revenue.
         tests:
           - not_null
       - name: cost_amount
-        desciption: Cost amount.
+        description: Cost amount.
         tests:
           - not_null
       - name: gross_profit
-        desciption: Gross profit.
+        description: Gross profit.
         tests:
           - not_null
       - name: net_profit
-        desciption: Net profit.
+        description: Net profit.
         tests:
           - not_null
