@@ -1,5 +1,8 @@
 # Welcome to Wide World Importers with DBT
 
+### Data Warehouse Schema
+- Link [here](https://drive.google.com/file/d/14JUyZdbpfdqgfxSIj0fBvxGwYPuAEpEc/view?usp=sharing)
+
 ### Using the starter project
 
 1. Setup python and virtual environment.
